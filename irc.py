@@ -11,9 +11,9 @@ irc=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print('connecting to server')
 
 irc.connect(('irc.dongcorp.org', 6667))
-irc.send('NICK '+nick+'\n')
+irc.send('NICK %s\n' % nick)
 irc.send('USER '+user+' '+user+' '+user+' :notevenalurkbot')
-irc.send('JOIN '+channel+'\n')
+irc.send('JOIN %s\n' % channel) 
 
 try:
 	while True:
@@ -22,14 +22,14 @@ try:
 		if text.find(':lel') !=-1:
 			x=1
 			while x<=10:
-				irc.send('PRIVMSG '+channel+' :lel \r\n')
+				irc.send('PRIVMSG %s :lel \r\n' % channel)
 				sleep(.1)
 				x=x+1
 		if text.find('PING') !=-1:
 			irc.send('PONG %s\r\n' % text[1])
 		
 		if text.find('376') !=-1:
-			irc.send('JOIN '+channel+'\n')
+			irc.send('JOIN %s\n' % channel)
 except(KeyboardInterrupt):
 	irc.close()
 	print('\n\nHave a nice day :)')
