@@ -4,6 +4,7 @@ from time import sleep
 
 user='lurker'
 channel='#'+raw_input('What channel do you want to use? ')
+print channel
 nick='el_fiery_dusko'
 
 irc=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
